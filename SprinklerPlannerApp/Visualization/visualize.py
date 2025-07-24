@@ -8,7 +8,7 @@ def main():
     base_dir = os.path.dirname(__file__)
     resource_dir = os.path.join(base_dir, "..", "Resources")
     csv_path = os.path.join(resource_dir, "output.csv")
-    output_image_path = os.path.join(resource_dir, "sprinkler_plot_filled.png")
+    output_image_path = os.path.join(resource_dir, "sprinkler_distribution.png")
 
     # === Load CSV Data ===
     try:

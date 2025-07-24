@@ -39,7 +39,7 @@ namespace SprinklerPlannerApp.Infrastructure.Data
                     }
                 }
             }
-
+            
             return pipes;
         }
     }

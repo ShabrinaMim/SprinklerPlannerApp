@@ -41,7 +41,6 @@ namespace SprinklerPlannerApp.Config
                 return pipeSeeder.LoadFromCsv(pipeCsvPath);
             });
 
-
             services.AddSingleton<ISprinklerPlannerService>(provider =>
             {
                 Room room = provider.GetRequiredService<Room>();

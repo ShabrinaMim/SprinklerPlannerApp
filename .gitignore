@@ -28,7 +28,7 @@ logs/
 *.pyc
 
 # Output files
-**/output.csv
+# **/output.csv
 
 # Dotnet artifacts
 *.nupkg

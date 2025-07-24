@@ -16,7 +16,6 @@ namespace SprinklerPlannerApp.Infrastructure.Output
             _logger = logger;
         }
 
-
         public void PrintSprinklerResults(List<(Point3D Sprinkler, Point3D ClosestPipePoint)> sprinklerResults)
         {
             _logger.LogInformation("Total Sprinklers Placed: {Count}", sprinklerResults.Count);
@@ -32,6 +31,7 @@ namespace SprinklerPlannerApp.Infrastructure.Output
             string fullPath = Path.GetFullPath(Path.Combine("SprinklerPlannerApp", "Resources", "output.csv"));
 
             string? directory = Path.GetDirectoryName(fullPath);
+
             if (!Directory.Exists(directory))
             {
                 Directory.CreateDirectory(directory!);
@@ -48,7 +48,6 @@ namespace SprinklerPlannerApp.Infrastructure.Output
 
             _logger.LogInformation("CSV report saved.");
         }
-
 
         private string FormatPoint(Point3D point)
         {

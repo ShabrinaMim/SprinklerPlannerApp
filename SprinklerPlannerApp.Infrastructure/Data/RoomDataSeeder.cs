@@ -29,8 +29,8 @@ namespace SprinklerPlannerApp.Infrastructure.Data
                     }
                 }
             }
+            
             return new Room(corners);
         }
-
     }
 }
