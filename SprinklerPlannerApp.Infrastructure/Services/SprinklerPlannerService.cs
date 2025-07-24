@@ -22,12 +22,12 @@ namespace SprinklerPlannerApp.Infrastructure.Services
             _logger = logger;
             _placedSprinklers = new List<Point3D>();
 
-            _logger.LogInformation("SprinklerPlannerService initialized with {Count} pipes", pipes.Count);
+            _logger.LogInformation("Sprinkler Planner Service initialized successfully with {PipeCount} pipes.", pipes.Count);
         }
 
         public List<(Point3D Sprinkler, Point3D ClosestPipePoint)> PlanSprinklers()
         {
-            _logger.LogInformation("Starting sprinkler planning...");
+            _logger.LogInformation("Commencing sprinkler placement process...");
             List<(Point3D, Point3D)> sprinklerResults = new();
 
             (double minX, double maxX, double minY, double maxY) = _room.GetBounds();
@@ -58,7 +58,7 @@ namespace SprinklerPlannerApp.Infrastructure.Services
                 }
             }
 
-            _logger.LogInformation("Planning complete. Total sprinklers placed: {Count}", sprinklerResults.Count);
+            _logger.LogInformation("Sprinkler placement process completed successfully.");
             return sprinklerResults;
         }
 

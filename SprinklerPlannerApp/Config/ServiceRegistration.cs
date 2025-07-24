@@ -1,12 +1,16 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using SprinklerPlannerApp.Runner;
+using Serilog;
+using Serilog.Extensions.Logging;
 using SprinklerPlannerApp.Core.Domain;
 using SprinklerPlannerApp.Core.Interfaces;
 using SprinklerPlannerApp.Infrastructure.Data;
 using SprinklerPlannerApp.Infrastructure.Output;
 using SprinklerPlannerApp.Infrastructure.Services;
+using SprinklerPlannerApp.Runner;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace SprinklerPlannerApp.Config
 {
@@ -14,12 +18,17 @@ namespace SprinklerPlannerApp.Config
     {
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging(config =>
-            {
-                config.AddConsole();
-                config.SetMinimumLevel(LogLevel.Information);
-            });
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Information()
+                .WriteTo.Console(outputTemplate: "{Message:lj}{NewLine}")
+                .WriteTo.File("Logs/sprinklers.log", rollingInterval: RollingInterval.Day)
+                .CreateLogger();
 
+            services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.ClearProviders();
+                loggingBuilder.AddSerilog(dispose: true);
+            });
             services.AddSingleton<IOutputPrinter, ConsoleOutputPrinter>();
 
             services.AddSingleton<IRoomDataSeeder, RoomDataSeeder>();

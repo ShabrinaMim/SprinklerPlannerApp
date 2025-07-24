@@ -46,7 +46,7 @@ namespace SprinklerPlannerApp.Infrastructure.Output
                                  $"{result.ClosestPipePoint.X},{result.ClosestPipePoint.Y},{result.ClosestPipePoint.Z}");
             }
 
-            _logger.LogInformation("CSV report saved.");
+            _logger.LogInformation("CSV report saved to SprinklerPlannerApp/Resources/output.csv");
         }
 
         private string FormatPoint(Point3D point)

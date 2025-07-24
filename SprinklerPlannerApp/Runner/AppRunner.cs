@@ -23,7 +23,6 @@ namespace SprinklerPlannerApp.Runner
 
         public void Run()
         {
-            _logger.LogInformation("Sprinkler Planner App Started");
             List<(Point3D Sprinkler, Point3D ClosestPipePoint)> results = _plannerService.PlanSprinklers();
             _outputPrinter.PrintSprinklerResults(results);
             _outputPrinter.ExportToCsv(results, "Resources/output.csv");
