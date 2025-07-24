@@ -29,9 +29,7 @@ namespace SprinklerPlannerApp.Infrastructure.Output
 
         public void ExportToCsv(List<(Point3D Sprinkler, Point3D ClosestPipePoint)> sprinklerResults, string relativePath)
         {
-            string baseDir = AppContext.BaseDirectory;
-            string outputPath = Path.Combine(baseDir, "..", "..", "..", "Resources", "output.csv");
-            string fullPath = Path.GetFullPath(outputPath);
+            string fullPath = Path.GetFullPath(Path.Combine("SprinklerPlannerApp", "Resources", "output.csv"));
 
             string? directory = Path.GetDirectoryName(fullPath);
             if (!Directory.Exists(directory))
@@ -48,8 +46,9 @@ namespace SprinklerPlannerApp.Infrastructure.Output
                                  $"{result.ClosestPipePoint.X},{result.ClosestPipePoint.Y},{result.ClosestPipePoint.Z}");
             }
 
-            _logger.LogInformation("CSV report saved to {FilePath}", fullPath);
+            _logger.LogInformation("CSV report saved.");
         }
+
 
         private string FormatPoint(Point3D point)
         {
