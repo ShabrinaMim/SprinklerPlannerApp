@@ -12,7 +12,6 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Output
         [Fact]
         public void PrintSprinklerResults_LogsEachResult()
         {
-            // Arrange
             Mock<ILogger<ConsoleOutputPrinter>> mockLogger = new Mock<ILogger<ConsoleOutputPrinter>>();
             ConsoleOutputPrinter printer = new ConsoleOutputPrinter(mockLogger.Object);
 
@@ -22,12 +21,8 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Output
                 (new Point3D(7, 8, 9), new Point3D(10, 11, 12))
             };
 
-            // Act
             printer.PrintSprinklerResults(data);
 
-            // Assert
-
-            // 1. Verify "Total Sprinklers Placed"
             mockLogger.Verify(
                 logger => logger.Log(
                     LogLevel.Information,
@@ -37,7 +32,6 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Output
                     It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
                 Times.Once);
 
-            // 2. Verify each sprinkler log
             mockLogger.Verify(
                 logger => logger.Log(
                     LogLevel.Information,

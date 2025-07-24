@@ -12,7 +12,6 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Services
         [Fact]
         public void PlanSprinklers_WithValidRoomAndPipes_PlacesSprinklersCorrectly()
         {
-            // Arrange
             List<Point3D> corners = new List<Point3D>
             {
                 new Point3D(0, 0, 0),
@@ -32,10 +31,8 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Services
             Mock<ILogger<SprinklerPlannerService>> loggerMock = new Mock<ILogger<SprinklerPlannerService>>();
             SprinklerPlannerService planner = new SprinklerPlannerService(room, pipes, loggerMock.Object);
 
-            // Act
             List<(Point3D Sprinkler, Point3D ClosestPipePoint)> results = planner.PlanSprinklers();
 
-            // Assert
             Assert.NotEmpty(results);
             foreach ((Point3D sprinkler, Point3D pipePoint) in results)
             {
@@ -48,7 +45,6 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Services
         [Fact]
         public void PlanSprinklers_WhenNoValidPipes_ReturnsEmptyResult()
         {
-            // Arrange
             List<Point3D> corners = new List<Point3D>
             {
                 new Point3D(0, 0, 0),
@@ -62,17 +58,14 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Services
             Mock<ILogger<SprinklerPlannerService>> loggerMock = new Mock<ILogger<SprinklerPlannerService>>();
             SprinklerPlannerService planner = new SprinklerPlannerService(room, emptyPipes, loggerMock.Object);
 
-            // Act
             List<(Point3D Sprinkler, Point3D ClosestPipePoint)> results = planner.PlanSprinklers();
 
-            // Assert
             Assert.Empty(results);
         }
 
         [Fact]
         public void PlanSprinklers_WithTooSmallRoom_ReturnsEmpty()
         {
-            // Arrange — Room too small for 2500mm spacing
             List<Point3D> corners = new List<Point3D>
             {
                 new Point3D(0, 0, 0),
@@ -92,10 +85,8 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Services
             Mock<ILogger<SprinklerPlannerService>> loggerMock = new Mock<ILogger<SprinklerPlannerService>>();
             SprinklerPlannerService planner = new SprinklerPlannerService(smallRoom, pipes, loggerMock.Object);
 
-            // Act
             List<(Point3D Sprinkler, Point3D ClosestPipePoint)> results = planner.PlanSprinklers();
 
-            // Assert
             Assert.Empty(results);
         }
     }

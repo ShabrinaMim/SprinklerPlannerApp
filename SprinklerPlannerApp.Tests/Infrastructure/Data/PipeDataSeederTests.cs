@@ -11,7 +11,6 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Data
         [Fact]
         public void LoadFromCsv_ValidCsv_ReturnsCorrectLineSegments()
         {
-            // Arrange
             string tempFilePath = Path.GetTempFileName();
             File.WriteAllLines(tempFilePath, new[]
             {
@@ -21,10 +20,8 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Data
 
             PipeDataSeeder seeder = new PipeDataSeeder();
 
-            // Act
             List<LineSegment> pipes = seeder.LoadFromCsv(tempFilePath);
 
-            // Assert
             Assert.Equal(2, pipes.Count);
 
             Assert.Equal(0, pipes[0].Start.X, 3);
@@ -33,13 +30,12 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Data
             Assert.Equal(5, pipes[1].Start.X, 3);
             Assert.Equal(15, pipes[1].End.X, 3);
 
-            File.Delete(tempFilePath); // Cleanup
+            File.Delete(tempFilePath);
         }
 
         [Fact]
         public void LoadFromCsv_InvalidLine_IgnoresMalformedLines()
         {
-            // Arrange
             string tempFilePath = Path.GetTempFileName();
             File.WriteAllLines(tempFilePath, new[]
             {
@@ -50,15 +46,13 @@ namespace SprinklerPlannerApp.Tests.Infrastructure.Data
 
             PipeDataSeeder seeder = new PipeDataSeeder();
 
-            // Act
             List<LineSegment> pipes = seeder.LoadFromCsv(tempFilePath);
 
-            // Assert
             Assert.Equal(2, pipes.Count);
             Assert.Equal(0, pipes[0].Start.X, 3);
             Assert.Equal(1, pipes[1].Start.X, 3);
 
-            File.Delete(tempFilePath); // Cleanup
+            File.Delete(tempFilePath);
         }
     }
 }

@@ -17,13 +17,10 @@ namespace SprinklerPlannerApp.Tests.Core.Domain
         [Fact]
         public void GetBounds_ReturnsCorrectMinMaxCoordinates()
         {
-            // Arrange
             Room room = new Room(_squareRoom);
 
-            // Act
             (double minX, double maxX, double minY, double maxY) = room.GetBounds();
 
-            // Assert
             Assert.Equal(0, minX);
             Assert.Equal(10, maxX);
             Assert.Equal(0, minY);
@@ -31,10 +28,10 @@ namespace SprinklerPlannerApp.Tests.Core.Domain
         }
 
         [Theory]
-        [InlineData(5, 5, true)]     // clearly inside
-        [InlineData(0, 0, true)]     // corner — considered inside
-        [InlineData(10, 0, false)]   // edge — treated as outside by your algo
-        [InlineData(-1, -1, false)]  // outside
+        [InlineData(5, 5, true)]
+        [InlineData(0, 0, true)]
+        [InlineData(10, 0, false)]
+        [InlineData(-1, -1, false)]
         public void IsInside_CheckVariousPoints(double x, double y, bool expected)
         {
             List<Point3D> corners = new List<Point3D>
@@ -54,19 +51,16 @@ namespace SprinklerPlannerApp.Tests.Core.Domain
         }
 
         [Theory]
-        [InlineData(5, 5, 2, true)]   // Inside and far enough from walls
-        [InlineData(0.5, 0.5, 2, false)] // Too close to wall
-        [InlineData(9, 9, 0.5, true)]  // Inside and slightly away
+        [InlineData(5, 5, 2, true)]
+        [InlineData(0.5, 0.5, 2, false)]
+        [InlineData(9, 9, 0.5, true)]
         public void IsFarFromWalls_CheckDistanceToWalls(double x, double y, double minDist, bool expected)
         {
-            // Arrange
             Room room = new Room(_squareRoom);
             Point3D point = new Point3D(x, y, 0);
 
-            // Act
             bool result = room.IsFarFromWalls(point, minDist);
 
-            // Assert
             Assert.Equal(expected, result);
         }
     }
