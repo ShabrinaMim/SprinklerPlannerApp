@@ -29,6 +29,7 @@ namespace SprinklerPlannerApp.Config
                 loggingBuilder.ClearProviders();
                 loggingBuilder.AddSerilog(dispose: true);
             });
+            
             services.AddSingleton<IOutputPrinter, ConsoleOutputPrinter>();
 
             services.AddSingleton<IRoomDataSeeder, RoomDataSeeder>();
