@@ -123,6 +123,8 @@ Log.Logger = new LoggerConfiguration()
 
 Logs are injected using `ILogger<T>` and handled via DI.
 
+> Note: Log files are generated at runtime under `Logs/` (e.g., `Logs/sprinklers.log`) but are not included in the repository as they are excluded via `.gitignore`.
+
 ---
 
 
