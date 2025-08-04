@@ -28,21 +28,20 @@ room_x, room_y, room_z = zip(*room_corners + [room_corners[0]])
 ax.plot(room_x, room_y, room_z, color='black', label='Room Ceiling')
 
 for pt in room_corners:
-    ax.text(pt[0], pt[1], pt[2] + 200, f'({int(pt[0])}, {int(pt[1])}, {int(pt[2])})',
-            fontsize=8, color='black')
+    ax.text(pt[0], pt[1], pt[2] + 100, f'({int(pt[0])}, {int(pt[1])}, {int(pt[2])})',
+            fontsize=7.5, color='black')
 
 for i, (start, end) in enumerate(pipe_segments):
-    xs = [start[0], end[0]]
-    ys = [start[1], end[1]]
-    zs = [start[2], end[2]]
+    xs, ys, zs = [start[0], end[0]], [start[1], end[1]], [start[2], end[2]]
     ax.plot(xs, ys, zs, color='red', linewidth=2, label='Pipe' if i == 0 else None)
 
-    ax.text(start[0], start[1], start[2] + 200, f'({int(start[0])},{int(start[1])},{int(start[2])})',
-            fontsize=7, color='darkred')
-    ax.text(end[0], end[1], end[2] + 200, f'({int(end[0])},{int(end[1])},{int(end[2])})',
-            fontsize=7, color='darkred')
+    ax.text(start[0], start[1], start[2] + 80, f'({int(start[0])},{int(start[1])},{int(start[2])})',
+            fontsize=6.5, color='darkred')
+    ax.text(end[0], end[1], end[2] + 80, f'({int(end[0])},{int(end[1])},{int(end[2])})',
+            fontsize=6.5, color='darkred')
 
 ax.scatter(df["SprinklerX"], df["SprinklerY"], df["SprinklerZ"], color='blue', label="Sprinklers")
+
 ax.scatter(df["PipeX"], df["PipeY"], df["PipeZ"], color='green', marker='x', label="Pipe Connections")
 
 for _, row in df.iterrows():
@@ -51,11 +50,11 @@ for _, row in df.iterrows():
             [row["SprinklerZ"], row["PipeZ"]],
             c='gray', alpha=0.5)
 
-    ax.text(row["SprinklerX"], row["SprinklerY"], row["SprinklerZ"] + 200,
+    ax.text(row["SprinklerX"], row["SprinklerY"], row["SprinklerZ"] + 60,
             f'({int(row["SprinklerX"])},{int(row["SprinklerY"])},{int(row["SprinklerZ"])})',
             fontsize=6, color='blue')
 
-    ax.text(row["PipeX"], row["PipeY"], row["PipeZ"] + 200,
+    ax.text(row["PipeX"], row["PipeY"], row["PipeZ"] + 60,
             f'({int(row["PipeX"])},{int(row["PipeY"])},{int(row["PipeZ"])})',
             fontsize=6, color='green')
 
