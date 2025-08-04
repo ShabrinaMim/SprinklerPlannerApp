@@ -7,7 +7,7 @@ def main():
     base_dir = os.path.dirname(__file__)
     resource_dir = os.path.join(base_dir, "..", "Resources")
     csv_path = os.path.join(resource_dir, "output.csv")
-    output_image_path = os.path.join(resource_dir, "sprinkler_distribution.png")
+    output_image_path = os.path.join(resource_dir, "sprinkler_distribution_2D.png")
 
     try:
         sprinkler_data = pd.read_csv(csv_path)

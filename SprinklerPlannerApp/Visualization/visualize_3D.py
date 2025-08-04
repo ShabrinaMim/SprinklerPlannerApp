@@ -66,6 +66,6 @@ ax.view_init(elev=30, azim=45)
 ax.legend(loc='upper right')
 plt.tight_layout()
 
-output_path = os.path.join(base_dir, "..", "Resources", "sprinkler_3d_with_coordinates.png")
+output_path = os.path.join(base_dir, "..", "Resources", "sprinkler_distribution_3D.png")
 plt.savefig(output_path, dpi=300)
 print(f"Saved: {output_path}")

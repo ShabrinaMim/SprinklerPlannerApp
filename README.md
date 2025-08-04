@@ -218,7 +218,7 @@ pip install matplotlib pandas
 
 The script generates and saves an image like this:
 
-![Sprinkler Distribution](SprinklerPlannerApp/Resources/sprinkler_distribution.png)
+![Sprinkler Distribution](SprinklerPlannerApp/Resources/sprinkler_distribution_2D.png)
 
 The image shows:
 - **Blue dots**: Sprinkler positions
@@ -246,7 +246,7 @@ pip install matplotlib pandas
 
 The script generates and saves an image like this:
 
-![Sprinkler Distribution](SprinklerPlannerApp/Resourcessprinkler_3d_with_coordinates.png)
+![Sprinkler Distribution](SprinklerPlannerApp/Resources/sprinkler_distribution_3D.png)
 
 The image shows:
 - **Blue dots**: Sprinkler positions
