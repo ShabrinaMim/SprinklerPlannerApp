@@ -71,7 +71,9 @@ namespace SprinklerPlannerApp.Core.Domain
                 Point3D start = Corners[i];
                 Point3D end = Corners[(i + 1) % cornerCount];
 
-                double distance = CalculateDistanceToSegment(start, end, point);
+                LineSegment segment = new LineSegment(start, end);
+                double distance = segment.GetDistanceTo(point);
+
                 if (distance < minDistance)
                 {
                     return false;
@@ -79,28 +81,6 @@ namespace SprinklerPlannerApp.Core.Domain
             }
 
             return true;
-        }
-
-        private double CalculateDistanceToSegment(Point3D a, Point3D b, Point3D p)
-        {
-            double dx = b.X - a.X;
-            double dy = b.Y - a.Y;
-            double lengthSquared = dx * dx + dy * dy;
-
-            if (lengthSquared == 0)
-            {
-                double distance = Math.Sqrt((p.X - a.X) * (p.X - a.X) + (p.Y - a.Y) * (p.Y - a.Y));
-                return distance;
-            }
-
-            double t = ((p.X - a.X) * dx + (p.Y - a.Y) * dy) / lengthSquared;
-            t = Math.Max(0, Math.Min(1, t));
-
-            double closestX = a.X + t * dx;
-            double closestY = a.Y + t * dy;
-
-            double distanceToSegment = Math.Sqrt((p.X - closestX) * (p.X - closestX) + (p.Y - closestY) * (p.Y - closestY));
-            return distanceToSegment;
         }
     }
 }

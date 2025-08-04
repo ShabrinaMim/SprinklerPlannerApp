@@ -17,11 +17,11 @@ namespace SprinklerPlannerApp.Core.Domain
 
         public double DistanceTo(Point3D otherPoint)
         {
-            double differenceX = X - otherPoint.X;
-            double differenceY = Y - otherPoint.Y;
-            double differenceZ = Z - otherPoint.Z;
+            double dx = X - otherPoint.X;
+            double dy = Y - otherPoint.Y;
+            double dz = Z - otherPoint.Z;
 
-            return Math.Sqrt(differenceX * differenceX + differenceY * differenceY + differenceZ * differenceZ);
+            return Math.Sqrt(dx * dx + dy * dy + dz * dz);
         }
 
         public override string ToString()

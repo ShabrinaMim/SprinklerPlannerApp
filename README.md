@@ -198,7 +198,7 @@ SprinklerX,SprinklerY,SprinklerZ,PipeX,PipeY,PipeZ
 
 ---
 
-### Sprinkler Placement Visualization
+### Sprinkler Placement Visualization(2D)
 
 You can visualize the sprinkler placements in a 2D top-down view using the provided Python script. This helps to understand the distribution and coverage of the sprinklers within the room.
 
@@ -219,6 +219,34 @@ pip install matplotlib pandas
 The script generates and saves an image like this:
 
 ![Sprinkler Distribution](SprinklerPlannerApp/Resources/sprinkler_distribution.png)
+
+The image shows:
+- **Blue dots**: Sprinkler positions
+- **Red lines**: Pipe connections
+- **Black polygon**: Room boundary
+---
+
+### Sprinkler Placement Visualization(3D)
+
+You can visualize the sprinkler placements in a 3D view using the provided Python script. This helps to understand the distribution and coverage of the sprinklers within the room.
+
+### Run the Visualization Script
+
+```bash
+python3 SprinklerPlannerApp/Visualization/visualize_3d.py
+```
+
+Make sure you have the required Python packages installed:
+
+```bash
+pip install matplotlib pandas
+```
+
+### Output Preview
+
+The script generates and saves an image like this:
+
+![Sprinkler Distribution](SprinklerPlannerApp/Resourcessprinkler_3d_with_coordinates.png)
 
 The image shows:
 - **Blue dots**: Sprinkler positions
